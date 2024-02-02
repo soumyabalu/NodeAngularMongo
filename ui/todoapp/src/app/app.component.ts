@@ -48,7 +48,7 @@ addNotes(){
 // completing addNotes method
 deleteNotes(id: any){
   console.log("statred deleting process")
-  this.http.delete(this.APIUrl+'DeleteNotes?id=', noteid).subscribe(data=>{
+  this.http.delete(this.APIUrl+'DeleteNotes?id=', id).subscribe(data=>{
     alert(data)
     // once added we will display the resultb and also refresh the notes data
     this.refreshNotes();
