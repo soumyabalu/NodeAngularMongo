@@ -1,0 +1,12 @@
+ <!-- we have delated the defalt template provide by angular and have added a header  -->
+<h2> To Do App </h2>
+<!-- lets add text box to accept new notes -->
+<input id = "newNotes">
+<button (click)= "addNotes()">Add Notes</button>
+
+<h3 *ngFor="let note of notes">
+  <b>* {{note.description}}</b>
+  <button (click)= "deleteNotes(note.id)">Delete Notes</button>
+</h3>
+
+<!-- // to  call the api methods we need to use the HTTP client module. -->
