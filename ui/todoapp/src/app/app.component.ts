@@ -48,11 +48,12 @@ addNotes(){
 // completing addNotes method
 deleteNotes(){
   console.log("statred deleting process")
-  this.http.delete(this.APIUrl+'DeleteNotes?id=', id)
+  this.http.delete(this.APIUrl+'DeleteNotes?id=', id).subscribe(data=>{
+    alert(data)
     // once added we will display the resultb and also refresh the notes data
     this.refreshNotes();
   
-}
+})
 }
 
 
