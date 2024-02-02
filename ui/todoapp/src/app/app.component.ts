@@ -46,7 +46,7 @@ addNotes(){
 
 
 // completing addNotes method
-deleteNotes(){
+deleteNotes(id: any){
   console.log("statred deleting process")
   this.http.delete(this.APIUrl+'DeleteNotes?id=', id).subscribe(data=>{
     alert(data)
