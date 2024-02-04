@@ -4,7 +4,7 @@
 <input id = "newNotes">
 <button (click)= "addNotes()">Add Notes</button>
 <h3 *ngFor="let note of notes">
-  <textarea id="{{note.id}}" >* {{note.description}}, {{note.location}}</textarea>
+  <textarea id="{{note.id}}" > {{note.description}}, {{note.location}}</textarea>
 
   <button (click)= "deleteNotes(note.id)">Delete Notes</button>
   <button (click)= "editNotes(note.id)">Edit Notes</button>

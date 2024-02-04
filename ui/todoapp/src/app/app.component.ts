@@ -50,24 +50,14 @@ addNotes(){
 
 
 // completing addNotes method
-<<<<<<< HEAD
 deleteNotes(id: any){
   console.log("statred deleting process")
   this.http.delete(this.APIUrl+'DeleteNotes?id='+id).subscribe(data=>{
     alert(data)
-=======
-deleteNotes(id:any){
-  console.log("statred deleting process")
-  this.http.delete(this.APIUrl+'DeleteNotes?id='+id).subscribe(data => {
-    alert(data)
-    // Handle error
->>>>>>> 647ded0 (added update feature)
     // once added we will display the resultb and also refresh the notes data
     this.refreshNotes();
   
 })
-<<<<<<< HEAD
-=======
 }
 
 updateNotes(id:any){
@@ -90,6 +80,6 @@ editNotes(id:any)
   //assign value to the text area elemnt 
   //add the element to the DOM 
 }
->>>>>>> 647ded0 (added update feature)
+
 }
 
