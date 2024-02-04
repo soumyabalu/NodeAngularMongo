@@ -3,10 +3,15 @@
 <!-- lets add text box to accept new notes -->
 <input id = "newNotes">
 <button (click)= "addNotes()">Add Notes</button>
-
 <h3 *ngFor="let note of notes">
-  <b>* {{note.description}}</b>
+  <textarea id="{{note.id}}" >* {{note.description}}, {{note.location}}</textarea>
+
   <button (click)= "deleteNotes(note.id)">Delete Notes</button>
+  <button (click)= "editNotes(note.id)">Edit Notes</button>
+  <button (click)="updateNotes(note.id)">Update Notes</button>
+  
+
+
 </h3>
 
 <!-- // to  call the api methods we need to use the HTTP client module. -->

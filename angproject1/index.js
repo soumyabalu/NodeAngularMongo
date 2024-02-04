@@ -7,6 +7,14 @@ const { response } = require("express");
 const { request } = require("express");
 var app = express();   // we are crating an application using Express script framework . so we are creating an express script object.
 app.use(cors()); 
+app.use(express.json());
+app.use((req, res, next) => {
+    // x
+    if (req.method === 'POST' || req.method === 'PUT') {
+      console.log('Body:', req.body);
+    }
+    next();
+  });
 // adding connection string to Mongo DB
 var CONNECTION_STRING = "mongodb+srv://soumyabalu:test1234@cluster0.0xscudc.mongodb.net/?retryWrites=true&w=majority";
 
@@ -68,10 +76,18 @@ app.post('/api/soumyaapp/AddNotes',multer().none(),(request, response)=>{
 // now we are adding a method to delete a note 
 
 app.delete('/api/soumyaapp/DeleteNotes', multer().none(), (request, response)=>{
-   console.log('starting to delete')
-    database.collection("soumyacollection ").delete({
-     id:request.query.id //we are sending the id in the requst url(via query string) to get deleted.
-    });
+   console.log('starting to delete',request.query.id)
+    database.collection("soumyacollection").deleteOne({id:request.query.id});
+    
     response.json("sucessfully deleted");
 });
+
+
+app.put('/api/soumyaapp/UpdateNotes', multer().none(), (request, response)=>{
+    console.log('starting to update',request.query.id)
+    console.log('starting to value',request.body.description)
+     database.collection("soumyacollection").updateOne({id:request.query.id},
+        {$set: {description:request.body.description}});
+     response.json("sucessfully updated");
+ });
 

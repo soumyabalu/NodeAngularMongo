@@ -25,9 +25,12 @@ refreshNotes(){
   
   })
 }
+
+
   // ng is the lifecycle method in init  which gets executed on page load and need to call the refreshNotes method here
 ngOnInit(){
   this.refreshNotes();
+ 
 }
 // completing addNotes method
 addNotes(){
@@ -36,6 +39,7 @@ addNotes(){
   var newNotes= (<HTMLInputElement>document.getElementById("newNotes")).value;
   // adding form data to send to api
   var formData = new FormData();
+  
   formData.append("newNotes", newNotes);
   this.http.post(this.APIUrl+'AddNotes', formData).subscribe(data=>{
    alert(data)
@@ -46,16 +50,46 @@ addNotes(){
 
 
 // completing addNotes method
+<<<<<<< HEAD
 deleteNotes(id: any){
   console.log("statred deleting process")
   this.http.delete(this.APIUrl+'DeleteNotes?id='+id).subscribe(data=>{
     alert(data)
+=======
+deleteNotes(id:any){
+  console.log("statred deleting process")
+  this.http.delete(this.APIUrl+'DeleteNotes?id='+id).subscribe(data => {
+    alert(data)
+    // Handle error
+>>>>>>> 647ded0 (added update feature)
     // once added we will display the resultb and also refresh the notes data
     this.refreshNotes();
   
 })
+<<<<<<< HEAD
+=======
 }
 
-
-
+updateNotes(id:any){
+  console.log("statred update process")
+ 
+  var newNotes= (<HTMLInputElement>document.getElementById(id)).value;
+  alert("Goingto update "+ newNotes)
+const desc = {description: newNotes};
+this.http.put(this.APIUrl+'UpdateNotes?id=' +id , desc).subscribe(data=>{
+  alert(data)
+  this.refreshNotes();
+  
+})
+}
+editNotes(id:any)
+{
+  alert("Edit button working")
+  //identify the element to be replaced with textare
+  //create new text area element 
+  //assign value to the text area elemnt 
+  //add the element to the DOM 
+}
+>>>>>>> 647ded0 (added update feature)
+}
 
